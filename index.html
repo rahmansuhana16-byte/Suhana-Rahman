@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Suhana A — Gen AI Engineer and Computer Technology student portfolio.">
+  <title>Suhana A | Gen AI Engineer</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #17213b;
+      --text: #f4f6ff;
+      --muted: #aab4cf;
+      --accent: #8b9cff;
+      --accent-2: #63e6c4;
+      --line: rgba(255,255,255,.11);
+      --shadow: 0 18px 50px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(circle at 80% 5%, rgba(99,230,196,.12), transparent 28rem),
+        radial-gradient(circle at 5% 20%, rgba(139,156,255,.16), transparent 30rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px);
+      background: rgba(11,16,32,.78); border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .04em; }
+    .brand span { color: var(--accent-2); }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover { color: var(--accent-2); }
+    .hero { min-height: 80vh; display: grid; grid-template-columns: 1.4fr .8fr; align-items: center; gap: 50px; padding: 80px 0 65px; }
+    .eyebrow { color: var(--accent-2); text-transform: uppercase; letter-spacing: .17em; font-size: .78rem; font-weight: 800; }
+    h1 { font-size: clamp(3rem, 8vw, 5.8rem); line-height: .99; letter-spacing: -.06em; margin: 16px 0; }
+    h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); max-width: 650px; font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 18px; border-radius: 999px; font-weight: 750; border: 1px solid var(--line); }
+    .primary { color: #0b1020; background: linear-gradient(110deg,var(--accent-2),#b6c0ff); border: 0; }
+    .secondary { color: var(--text); background: rgba(255,255,255,.04); }
+    .hero-card { background: linear-gradient(145deg,rgba(139,156,255,.18),rgba(99,230,196,.08)); border: 1px solid var(--line); border-radius: 28px; padding: 28px; box-shadow: var(--shadow); }
+    .monogram { width: 115px; height: 115px; display: grid; place-items: center; border-radius: 30px; background: linear-gradient(135deg,var(--accent),var(--accent-2)); color: #0b1020; font-size: 2.5rem; font-weight: 900; margin-bottom: 25px; }
+    .hero-card h2 { margin: 0 0 5px; font-size: 1.45rem; }
+    .hero-card p { margin: 0; font-size: .95rem; }
+    .quick { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 22px; }
+    .quick div { background: rgba(10,15,30,.42); border: 1px solid var(--line); border-radius: 15px; padding: 13px; }
+    .quick strong { display: block; font-size: 1.2rem; color: var(--accent-2); }
+    .quick small { color: var(--muted); }
+    section { padding: 68px 0; }
+    .section-head { margin-bottom: 28px; }
+    .section-head .eyebrow { margin-bottom: 7px; }
+    h2.section-title { font-size: clamp(2rem,4vw,3rem); letter-spacing: -.04em; line-height: 1.1; margin: 0; }
+    .section-intro { color: var(--muted); max-width: 720px; margin: 12px 0 0; }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 17px; }
+    .card { background: rgba(18,26,48,.86); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 8px; font-size: 1.08rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .taglist { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .tag { color: #dce2ff; background: rgba(139,156,255,.12); border: 1px solid rgba(139,156,255,.22); padding: 6px 11px; border-radius: 999px; font-size: .84rem; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .score { display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .score:last-child { border: 0; }
+    .score strong { font-size: 1.45rem; color: var(--accent-2); }
+    .score span { color: var(--muted); }
+    .list { margin: 0; padding-left: 20px; color: var(--muted); }
+    .list li { margin: 9px 0; }
+    .project { position: relative; overflow: hidden; }
+    .project:after { content: "AI"; position: absolute; right: 13px; bottom: -35px; font-size: 8rem; font-weight: 900; color: rgba(139,156,255,.06); pointer-events: none; }
+    .project-label { display: inline-block; color: var(--accent-2); font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; margin-bottom: 10px; }
+    .timeline { border-left: 1px solid rgba(99,230,196,.5); padding-left: 22px; }
+    .timeline-item { position: relative; margin: 0 0 22px; }
+    .timeline-item:before { content: ""; position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-2); left: -28px; top: 9px; }
+    .timeline-item h3 { margin: 0 0 4px; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+    .contact { text-align: center; background: linear-gradient(130deg,rgba(139,156,255,.14),rgba(99,230,196,.08)); border: 1px solid var(--line); border-radius: 26px; padding: 42px 24px; }
+    .contact p { color: var(--muted); }
+    footer { padding: 28px 0 38px; text-align: center; color: var(--muted); font-size: .88rem; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 65px; gap: 30px; }
+      .grid { grid-template-columns: repeat(2,1fr); }
+      .navlinks { gap: 12px; font-size: .82rem; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, 1100px); }
+      nav { align-items: flex-start; padding: 17px 0; flex-direction: column; }
+      .navlinks { gap: 10px 16px; }
+      .grid,.split { grid-template-columns: 1fr; }
+      section { padding: 52px 0; }
+      .hero { padding-top: 50px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#home">SUHANA<span>.</span>A</a>
+    <div class="navlinks">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#academics">Academics</a>
+      <a href="#projects">Projects</a><a href="#certificates">Certificates</a><a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap hero" id="home">
+    <div>
+      <div class="eyebrow">Computer Technology • Generative AI</div>
+      <h1>Hi, I'm<br><span>Suhana A.</span></h1>
+      <h2 style="font-size:clamp(1.25rem,3vw,1.8rem);margin:0">Aspiring Gen AI Engineer</h2>
+      <p>I'm a first-year B.Sc. Computer Technology student specializing in Generative AI. I enjoy learning how technology works and building practical solutions using programming, web development, and AI.</p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">Explore my work</a>
+        <a class="btn secondary" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <div class="monogram">SA</div>
+      <h2>Suhana A.</h2>
+      <p>Gen AI Engineer · Student Developer</p>
+      <div class="quick">
+        <div><strong>03</strong><small>Core coding languages</small></div>
+        <div><strong>95%</strong><small>Class 12 score</small></div>
+        <div><strong>01</strong><small>Featured project</small></div>
+        <div><strong>01</strong><small>Hackathon participation</small></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">A little about me</div><h2 class="section-title">Curious mind. Growing builder.</h2></div>
+      <p class="section-intro">I am pursuing B.Sc. Computer Technology with a specialization in Generative AI at Rathinam Deemed-to-be Global University. As a first-year student, I am building a strong foundation in programming, computer systems, mathematics, and modern AI development tools. I value continuous learning, collaboration, and turning ideas into useful projects.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">What I work with</div><h2 class="section-title">Technical skills</h2></div>
+      <div class="grid">
+        <article class="card"><h3>Programming</h3><p>Writing structured programs and developing problem-solving skills.</p><div class="taglist"><span class="tag">Python</span><span class="tag">Java</span></div></article>
+        <article class="card"><h3>Web development</h3><p>Creating the structure and content of responsive web pages.</p><div class="taglist"><span class="tag">HTML</span></div></article>
+        <article class="card"><h3>AI & developer learning</h3><p>Exploring AI developer tools, APIs, and the foundations behind intelligent applications.</p><div class="taglist"><span class="tag">Gen AI</span><span class="tag">API</span><span class="tag">REST API</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="academics">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Education & coursework</div><h2 class="section-title">Academic journey</h2></div>
+      <div class="split">
+        <article class="card">
+          <h3>B.Sc. Computer Technology — Generative AI</h3>
+          <p>Rathinam Deemed-to-be Global University</p>
+          <div class="taglist"><span class="tag">First-year student</span><span class="tag">Specialization: Gen AI</span></div>
+          <div style="margin-top:18px">
+            <div class="score"><span>Class 10</span><strong>93%</strong></div>
+            <div class="score"><span>Class 11</span><strong>95%</strong></div>
+            <div class="score"><span>Class 12</span><strong>95%</strong></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Relevant academic subjects</h3>
+          <ul class="list">
+            <li>AI Developer Tools</li>
+            <li>Frontend Engineering</li>
+            <li>Computer Organization and Architecture</li>
+            <li>Data Engineering and Python Aggregation</li>
+            <li>Python and Concurrent Programming</li>
+            <li>Linear Algebra and Vector Spaces</li>
+            <li>Problem Solving through Aptitude</li>
+            <li>APIs and REST APIs</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Things I'm building</div><h2 class="section-title">Featured project</h2></div>
+      <article class="card project">
+        <span class="project-label">AI / Machine Learning</span>
+        <h3>AI Fake News Detection</h3>
+        <p>A project focused on exploring how AI can help identify potentially misleading news content. The project highlights my interest in applying technology to real-world information challenges.</p>
+        <div class="taglist"><span class="tag">Artificial Intelligence</span><span class="tag">Python</span><span class="tag">Text Analysis</span></div>
+        <p style="margin-top:17px;font-size:.82rem">Project description can be expanded with your exact tools, workflow, and GitHub link.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Learning beyond class</div><h2 class="section-title">Certificates</h2></div>
+      <div class="grid">
+        <article class="card"><h3>Python Essentials 1</h3><p>Cisco Networking Academy</p></article>
+        <article class="card"><h3>Programming Fundamentals in Python</h3><p>Infosys</p></article>
+        <article class="card"><h3>Introduction to Python Programming</h3><p>Infosys</p></article>
+        <article class="card"><h3>Business Communication</h3><p>HP LIFE</p></article>
+        <article class="card"><h3>Business Email</h3><p>HP LIFE</p></article>
+        <article class="card"><h3>Effective Presentations</h3><p>HP LIFE</p></article>
+        <article class="card"><h3>Cisco Networking</h3><p>Networking learning certificate</p></article>
+        <article class="card"><h3>English / E-SET</h3><p>Certificate title and issuing organization to be confirmed.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="wrap">
+      <div class="section-head"><div class="eyebrow">Milestones</div><h2 class="section-title">Achievements</h2></div>
+      <div class="card timeline">
+        <div class="timeline-item"><h3>University Hackathon Participant</h3><p>Participated in a university-level hackathon, gaining experience in collaborative problem-solving and innovation.</p></div>
+        <div class="timeline-item"><h3>Strong academic performance</h3><p>Scored 93% in Class 10 and 95% in both Class 11 and Class 12.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <div class="eyebrow">Let's connect</div>
+        <h2 class="section-title">Have an idea or opportunity?</h2>
+        <p>I'm open to learning, collaboration, and opportunities to grow as a developer.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn primary" href="mailto:YOUR_EMAIL@example.com">Email me</a>
+          <a class="btn secondary" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn secondary" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <p style="font-size:.8rem;margin-top:18px">Replace the sample email and profile links with your own details.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> Suhana A. Built with curiosity and code.</div></footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
